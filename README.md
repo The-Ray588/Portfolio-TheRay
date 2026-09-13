@@ -3,7 +3,7 @@
 
 <div align="center">
 
-![Portfolio Preview](avatar1.jpg)
+![Portfolio Preview](IMG_20260911_100718_279.jpg)
 
 **Личное портфолио веб-разработчика и художника**
 
