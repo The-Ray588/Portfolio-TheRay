@@ -1,4 +1,6 @@
-// --- 1. ПРЕЛОАДЕР ---
+// ============================================
+// 1. ПРЕЛОАДЕР
+// ============================================
 let progress = 0;
 const percentEl = document.getElementById('loader-percent');
 const preloader = document.getElementById('preloader');
@@ -11,6 +13,7 @@ const interval = setInterval(() => {
         setTimeout(() => {
             preloader.classList.add('hidden');
             initParticles();
+            initStars();
             AOS.init({ duration: 800, once: true });
             initTyped();
             initTilt();
@@ -19,7 +22,9 @@ const interval = setInterval(() => {
     percentEl.textContent = Math.floor(progress) + '%';
 }, 100);
 
-// --- 2. ЧАСТИЦЫ ---
+// ============================================
+// 2. ЧАСТИЦЫ
+// ============================================
 function initParticles() {
     particlesJS("particles-js", {
         "particles": {
@@ -40,7 +45,46 @@ function initParticles() {
     });
 }
 
-// --- 3. ПЕЧАТНАЯ МАШИНКА ---
+// ============================================
+// 3. ЗВЁЗДЫ (МЕРЦАЮЩИЕ ТОЧКИ)
+// ============================================
+function initStars() {
+    const starsContainer = document.getElementById('stars');
+    if (!starsContainer) return;
+    
+    const starCount = 120; // Количество звёзд
+    
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        
+        // Случайная позиция
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        
+        // Случайный размер (1-3px)
+        const size = Math.random() * 2 + 1;
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        
+        // Случайная задержка мерцания (0-3s)
+        star.style.animationDelay = Math.random() * 3 + 's';
+        
+        // Случайная длительность мерцания (2-5s)
+        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        
+        // 15% звёзд — яркие
+        if (Math.random() < 0.15) {
+            star.classList.add('bright');
+        }
+        
+        starsContainer.appendChild(star);
+    }
+}
+
+// ============================================
+// 4. ПЕЧАТНАЯ МАШИНКА
+// ============================================
 function initTyped() {
     new Typed('#typed-text', {
         strings: ['The-Ray588', 'Web Developer', 'Artist', 'Student'],
@@ -48,14 +92,18 @@ function initTyped() {
     });
 }
 
-// --- 4. 3D-КАРТОЧКА ---
+// ============================================
+// 5. 3D-КАРТОЧКА (Vanilla Tilt)
+// ============================================
 function initTilt() {
     VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
         max: 15, speed: 400, glare: true, "max-glare": 0.3,
     });
 }
 
-// --- 5. КУРСОР ---
+// ============================================
+// 6. КАСТОМНЫЙ КУРСОР
+// ============================================
 const cursor = document.querySelector('.custom-cursor');
 const follower = document.querySelector('.custom-cursor-follower');
 const glow = document.querySelector('.cursor-glow');
@@ -80,7 +128,9 @@ document.querySelectorAll('a, button, .skill-card, .project-card').forEach(el =>
     });
 });
 
-// --- 6. ПРОГРЕСС СКРОЛЛА ---
+// ============================================
+// 7. ПРОГРЕСС СКРОЛЛА
+// ============================================
 window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -88,7 +138,9 @@ window.addEventListener('scroll', () => {
     document.getElementById('scroll-progress').style.width = scrollPercent + '%';
 });
 
-// --- 7. КНОПКА НАВЕРХ ---
+// ============================================
+// 8. КНОПКА НАВЕРХ
+// ============================================
 const backToTop = document.getElementById('back-to-top');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 500) backToTop.classList.add('visible');
@@ -98,14 +150,18 @@ backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// --- 8. ШАПКА ---
+// ============================================
+// 9. ШАПКА ПРИ СКРОЛЛЕ
+// ============================================
 window.addEventListener('scroll', () => {
     const nav = document.getElementById('navbar');
     if (window.scrollY > 50) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
 });
 
-// --- 9. ПЛАВНЫЙ СКРОЛЛ ---
+// ============================================
+// 10. ПЛАВНЫЙ СКРОЛЛ
+// ============================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -114,7 +170,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// --- 10. ТЕМА ---
+// ============================================
+// 11. ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ
+// ============================================
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = themeToggle.querySelector('i');
 
@@ -130,7 +188,9 @@ themeToggle.addEventListener('click', () => {
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
 });
 
-// --- 11. БУРГЕР ---
+// ============================================
+// 12. БУРГЕР-МЕНЮ
+// ============================================
 const burger = document.getElementById('burger-menu');
 const navLinks = document.getElementById('nav-links');
 
@@ -141,7 +201,9 @@ burger.addEventListener('click', () => {
     icon.classList.toggle('fa-times');
 });
 
-// --- 12. ФИЛЬТР ПРОЕКТОВ ---
+// ============================================
+// 13. ФИЛЬТР ПРОЕКТОВ
+// ============================================
 const filterBtns = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
 
@@ -163,7 +225,9 @@ filterBtns.forEach(btn => {
     });
 });
 
-// --- 13. ГЕНЕРАТОР МУЗЫКИ + ГРОМКОСТЬ ---
+// ============================================
+// 14. ГЕНЕРАТОР МУЗЫКИ + ГРОМКОСТЬ
+// ============================================
 const musicBtn = document.getElementById('music-toggle');
 const musicIcon = musicBtn.querySelector('i');
 const volumeSlider = document.getElementById('volume-slider');
@@ -174,9 +238,8 @@ let isPlaying = false;
 let schedulerTimer = null;
 let nextNoteTime = 0;
 let currentStep = 0;
-let currentVolume = 0.3; // 30% по умолчанию
+let currentVolume = 0.3;
 
-// Пентатоника
 const PENTATONIC = [
     130.81, 146.83, 164.81, 196.00, 220.00,
     261.63, 293.66, 329.63, 392.00, 440.00,
@@ -189,7 +252,6 @@ const SCHEDULE_AHEAD = 0.1;
 function initAudio() {
     if (!audioCtx) {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        // Создаём мастер-усилитель для управления громкостью
         masterGain = audioCtx.createGain();
         masterGain.gain.value = currentVolume;
         masterGain.connect(audioCtx.destination);
@@ -199,17 +261,13 @@ function initAudio() {
 function playNote(freq, time, duration) {
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
-    
     osc.type = Math.random() > 0.5 ? 'sine' : 'triangle';
     osc.frequency.value = freq;
-    
     gain.gain.setValueAtTime(0, time);
     gain.gain.linearRampToValueAtTime(0.08, time + 0.05);
     gain.gain.exponentialRampToValueAtTime(0.001, time + duration);
-    
     osc.connect(gain);
-    gain.connect(masterGain); // Подключаем к мастер-усилителю, а не к destination
-    
+    gain.connect(masterGain);
     osc.start(time);
     osc.stop(time + duration);
 }
@@ -263,7 +321,6 @@ musicBtn.addEventListener('click', () => {
     else startMusic();
 });
 
-// --- ПОЛЗУНОК ГРОМКОСТИ ---
 volumeSlider.addEventListener('input', (e) => {
     currentVolume = e.target.value / 100;
     if (masterGain) {
@@ -271,7 +328,108 @@ volumeSlider.addEventListener('input', (e) => {
     }
 });
 
-// --- 14. МУЛЬТИЯЗЫЧНОСТЬ ---
+// ============================================
+// 15. БЕЙДЖИК С ВЕРЁВКОЙ (ФИЗИКА МАЯТНИКА)
+// ============================================
+const badgeCard = document.getElementById('badge-card');
+
+if (badgeCard) {
+    let angle = 0;
+    let velocity = 0;
+    let targetAngle = 0;
+    const gravity = 0.4;
+    const damping = 0.92;
+    
+    let mouseX = 0;
+    let isHovering = false;
+    
+    badgeCard.addEventListener('mousemove', (e) => {
+        const rect = badgeCard.getBoundingClientRect();
+        const relativeX = (e.clientX - rect.left) / rect.width;
+        mouseX = (relativeX - 0.5) * 2;
+        isHovering = true;
+        targetAngle = mouseX * 15;
+    });
+    
+    badgeCard.addEventListener('mouseleave', () => {
+        isHovering = false;
+        targetAngle = 0;
+    });
+    
+    function animateBadge() {
+        if (!isHovering) targetAngle = 0;
+        
+        const acceleration = (targetAngle - angle) * gravity * 0.1;
+        velocity += acceleration;
+        velocity *= damping;
+        angle += velocity;
+        
+        badgeCard.style.transform = `rotate(${angle}deg)`;
+        
+        const string = document.querySelector('.badge-string');
+        const clip = document.querySelector('.badge-clip');
+        if (string) string.style.transform = `rotate(${angle * 0.3}deg)`;
+        if (clip) clip.style.transform = `rotate(${angle * 0.5}deg)`;
+        
+        requestAnimationFrame(animateBadge);
+    }
+    
+    animateBadge();
+    
+    // Звук при клике
+    function playClickSound() {
+        let ctx = window._clickAudioCtx;
+        if (!ctx) {
+            ctx = new (window.AudioContext || window.webkitAudioContext)();
+            window._clickAudioCtx = ctx;
+        }
+        if (ctx.state === 'suspended') ctx.resume();
+        
+        const notes = [523.25, 587.33, 659.25, 783.99, 880.00];
+        const freq = notes[Math.floor(Math.random() * notes.length)];
+        const now = ctx.currentTime;
+        
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now);
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(0.15, now + 0.01);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.5);
+        
+        const osc2 = ctx.createOscillator();
+        const gain2 = ctx.createGain();
+        osc2.type = 'triangle';
+        osc2.frequency.setValueAtTime(freq * 2, now);
+        gain2.gain.setValueAtTime(0, now);
+        gain2.gain.linearRampToValueAtTime(0.05, now + 0.01);
+        gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+        osc2.connect(gain2);
+        gain2.connect(ctx.destination);
+        osc2.start(now);
+        osc2.stop(now + 0.3);
+    }
+    
+    badgeCard.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') return;
+        playClickSound();
+        velocity += (Math.random() > 0.5 ? 1 : -1) * 8;
+        badgeCard.classList.remove('shake');
+        void badgeCard.offsetWidth;
+        badgeCard.classList.add('shake');
+        setTimeout(() => {
+            badgeCard.classList.remove('shake');
+        }, 700);
+    });
+}
+
+// ============================================
+// 16. МУЛЬТИЯЗЫЧНОСТЬ
+// ============================================
 const langToggle = document.getElementById('lang-toggle');
 const langLabel = document.getElementById('lang-label');
 let currentLang = 'ru';
