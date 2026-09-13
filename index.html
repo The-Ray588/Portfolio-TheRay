@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио | The-Ray588</title>
+    <!-- Шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Иконки -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Анимации при скролле -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Наши стили -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. ПРЕЛОАДЕР -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- 2. АНИМИРОВАННЫЙ ФОН -->
+    <div class="animated-bg"></div>
+
+    <!-- 3. ФОН С ЧАСТИЦАМИ -->
+    <div id="particles-js"></div>
+
+    <!-- 4. СВЕЧЕНИЕ ЗА КУРСОРОМ -->
+    <div class="cursor-glow"></div>
+
+    <!-- 5. НАВИГАЦИЯ -->
+    <nav id="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">The-Ray<span>.</span></a>
+            
+            <div class="nav-controls">
+                <button id="theme-toggle" class="icon-btn" title="Сменить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="burger-menu" class="icon-btn burger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 6. СЕКЦИЯ HERO -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text" data-aos="fade-right">
+                <div class="glass-quote">
+                    <p>"Avoid or just undertake it"</p>
+                </div>
+                <h1>Hi I'm <br><span class="gradient-text">The-Ray588</span></h1>
+                <p class="description">Увлеченный художник, учиться в 9 классе, мне собственно 15 лет.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-outline"><i class="fas fa-download"></i> Скачать CV</a>
+                    <a href="#skills" class="btn-solid">Мои навыки</a>
+                </div>
+            </div>
+            <div class="hero-image" data-aos="fade-left">
+                <div class="card">
+                    <img src="avatar1.jpg" alt="Мой аватар">
+                    <div class="card-overlay"></div>
+                    <div class="card-bottom">
+                        <span>@reychik_sketch</span>
+                        <a href="#contact" class="btn-small">Связаться</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. СЕКЦИЯ ABOUT -->
+    <section id="about" class="about">
+        <div class="container about-content">
+            <div class="about-text" data-aos="fade-right">
+                <h2>About <span class="gradient-text">Me</span></h2>
+                <p>Привет! Я начинающий веб-разработчик и художник. Мне нравится создавать не только красивый код, но и уникальный дизайн. Постоянно учусь новому и стремлюсь к совершенству в каждой детали.</p>
+                <div class="stats">
+                    <div class="stat-item"><span>5+</span><p>Проектов</p></div>
+                    <div class="stat-item"><span>1+</span><p>Год опыта</p></div>
+                    <div class="stat-item"><span>100%</span><p>Отдачи</p></div>
+                </div>
+            </div>
+            <div class="about-image" data-aos="fade-left">
+                <img src="avatar2.jpg" alt="Аватар 2">
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. СЕКЦИЯ SKILLS -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 data-aos="fade-up">Tools & <span class="gradient-text">Technologies</span></h2>
+            <div class="skills-grid">
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="50"><i class="fab fa-html5" style="color:#e34c26"></i><div><h3>HTML5</h3><p>Разметка</p></div></div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="100"><i class="fab fa-css3-alt" style="color:#264de4"></i><div><h3>CSS3</h3><p>Стилизация</p></div></div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="150"><i class="fab fa-js" style="color:#f0db4f"></i><div><h3>JavaScript</h3><p>Язык</p></div></div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="200"><i class="fab fa-react" style="color:#61dafb"></i><div><h3>React</h3><p>Фреймворк</p></div></div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="250"><i class="fab fa-node" style="color:#68a063"></i><div><h3>Node JS</h3><p>Среда</p></div></div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="300"><i class="fab fa-github" style="color:#fff"></i><div><h3>GitHub</h3><p>Репозиторий</p></div></div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="350"><i class="fab fa-figma" style="color:#f24e1e"></i><div><h3>Figma</h3><p>Дизайн</p></div></div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="400"><i class="fas fa-code" style="color:#007acc"></i><div><h3>VS Code</h3><p>Редактор</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. СЕКЦИЯ КОНТАКТЫ (без Email) -->
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <h2>Свяжитесь <span class="gradient-text">со мной</span></h2>
+            <p class="contact-sub">Всегда открыт для новых идей и предложений</p>
+            <div class="social-links">
+                <a href="https://t.me/reychik_sketch" target="_blank" class="social-btn telegram"><i class="fab fa-telegram"></i> Telegram</a>
+                <a href="https://github.com/The-Ray588" target="_blank" class="social-btn github"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Библиотеки -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+                  </html>
