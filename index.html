@@ -3,38 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио | The-Ray588</title>
+    <title>The-Ray588 | Портфолио</title>
+    <meta name="description" content="Портфолио веб-разработчика и художника The-Ray588">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="The-Ray588 | Портфолио">
+    <meta property="og:description" content="Веб-разработчик и художник. Создаю современные сайты и уникальный дизайн.">
+    <meta property="og:image" content="avatar1.jpg">
+    <meta property="og:url" content="https://the-ray588.github.io/portfolio/">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <!-- Шрифты -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
     <!-- Иконки -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Анимации при скролле -->
+    
+    <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Наши стили -->
+    
+    <!-- Lightbox -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Стили -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- 1. ПРЕЛОАДЕР -->
     <div id="preloader">
-        <div class="loader"></div>
+        <div class="loader-container">
+            <div class="loader"></div>
+            <div class="loader-percent" id="loader-percent">0%</div>
+        </div>
     </div>
 
     <!-- 2. АНИМИРОВАННЫЙ ФОН -->
     <div class="animated-bg"></div>
 
-    <!-- 3. ФОН С ЧАСТИЦАМИ -->
+    <!-- 3. ЧАСТИЦЫ -->
     <div id="particles-js"></div>
 
-    <!-- 4. СВЕЧЕНИЕ ЗА КУРСОРОМ -->
+    <!-- 4. СВЕЧЕНИЕ КУРСОРА -->
     <div class="cursor-glow"></div>
 
-    <!-- 5. НАВИГАЦИЯ -->
+    <!-- 5. КАСТОМНЫЙ КУРСОР -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-follower"></div>
+
+    <!-- 6. ИНДИКАТОР ПРОГРЕССА -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- 7. КНОПКА НАВЕРХ -->
+    <button id="back-to-top" class="back-to-top" title="Наверх">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- 8. МУЗЫКАЛЬНЫЙ ПЛЕЕР С ГРОМКОСТЬЮ -->
+    <div class="music-player">
+        <button id="music-toggle" class="music-btn" title="Включить музыку">
+            <i class="fas fa-play"></i>
+        </button>
+        <div class="volume-control">
+            <i class="fas fa-volume-down volume-icon"></i>
+            <input type="range" id="volume-slider" min="0" max="100" value="30" class="volume-slider">
+            <i class="fas fa-volume-up volume-icon"></i>
+        </div>
+    </div>
+
+    <!-- 9. НАВИГАЦИЯ -->
     <nav id="navbar">
         <div class="container nav-content">
             <a href="#" class="logo">The-Ray<span>.</span></a>
             
             <div class="nav-controls">
+                <button id="lang-toggle" class="icon-btn" title="Сменить язык">
+                    <i class="fas fa-globe"></i> <span id="lang-label">RU</span>
+                </button>
                 <button id="theme-toggle" class="icon-btn" title="Сменить тему">
                     <i class="fas fa-moon"></i>
                 </button>
@@ -44,51 +92,60 @@
             </div>
 
             <ul class="nav-links" id="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" data-ru="Главная" data-en="Home">Главная</a></li>
+                <li><a href="#about" data-ru="Обо мне" data-en="About">Обо мне</a></li>
+                <li><a href="#experience" data-ru="Опыт" data-en="Experience">Опыт</a></li>
+                <li><a href="#projects" data-ru="Проекты" data-en="Projects">Проекты</a></li>
+                <li><a href="#gallery" data-ru="Галерея" data-en="Gallery">Галерея</a></li>
+                <li><a href="#reviews" data-ru="Отзывы" data-en="Reviews">Отзывы</a></li>
+                <li><a href="#contact" data-ru="Контакты" data-en="Contact">Контакты</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- 6. СЕКЦИЯ HERO -->
+    <!-- 10. HERO -->
     <section id="home" class="hero">
         <div class="container hero-content">
             <div class="hero-text" data-aos="fade-right">
                 <div class="glass-quote">
                     <p>"Avoid or just undertake it"</p>
                 </div>
-                <h1>Hi I'm <br><span class="gradient-text">The-Ray588</span></h1>
-                <p class="description">Увлеченный художник, учиться в 9 классе, мне собственно 15 лет.</p>
+                <h1 data-ru="Привет, я " data-en="Hi, I'm ">Привет, я <br><span class="gradient-text" id="typed-text"></span></h1>
+                <p class="description" data-ru="Увлеченный студент-информатик с сильным интересом к веб-разработке и созданию современных цифровых решений." data-en="An enthusiastic informatics student with a strong interest in web development and creating modern digital solutions.">
+                    Увлеченный художнник, рисую арты программирую только сайты, мнн 15 лет, учусь в 9 классе.
+                </p>
                 <div class="hero-buttons">
-                    <a href="#" class="btn-outline"><i class="fas fa-download"></i> Скачать CV</a>
-                    <a href="#skills" class="btn-solid">Мои навыки</a>
+                    <a href="resume.pdf" download class="btn-outline"><i class="fas fa-download"></i> <span data-ru="Скачать CV" data-en="Download CV">Скачать CV</span></a>
+                    <a href="#projects" class="btn-solid" data-ru="Мои проекты" data-en="My Projects">Мои проекты</a>
                 </div>
             </div>
             <div class="hero-image" data-aos="fade-left">
-                <div class="card">
+                <div class="card tilt-card">
                     <img src="IMG_20260911_100718_279.jpg" alt="Мой аватар">
                     <div class="card-overlay"></div>
                     <div class="card-bottom">
                         <span>@reychik_sketch</span>
-                        <a href="#contact" class="btn-small">Связаться</a>
+                        <a href="#contact" class="btn-small" data-ru="Связаться" data-en="Contact">Связаться</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 7. СЕКЦИЯ ABOUT -->
+    <!-- 11. ABOUT -->
     <section id="about" class="about">
         <div class="container about-content">
             <div class="about-text" data-aos="fade-right">
-                <h2>About <span class="gradient-text">Me</span></h2>
-                <p>Привет! Я начинающий веб-разработчик и художник. Мне нравится создавать не только красивый код, но и уникальный дизайн. Постоянно учусь новому и стремлюсь к совершенству в каждой детали.</p>
+                <h2 data-ru="Обо <span class='gradient-text'>мне</span>" data-en="About <span class='gradient-text'>Me</span>">Обо <span class="gradient-text">мне</span></h2>
+                <p data-ru="Привет!Увлеченный художнник, рисую арты программирую только сайты, мнн 15 лет, учусь в 9 классе.
+                    </p>." data-en="Hi! I'm a beginner web developer and artist. I like to create not only beautiful code but also unique design. I'm constantly learning new things and striving for perfection in every detail.">
+                    Привет! Увлеченный художнник, рисую арты программирую только сайты, мнн 15 лет, учусь в 9 классе.
+                </p>.
+                </p>
                 <div class="stats">
-                    <div class="stat-item"><span>5+</span><p>Проектов</p></div>
-                    <div class="stat-item"><span>1+</span><p>Год опыта</p></div>
-                    <div class="stat-item"><span>100%</span><p>Отдачи</p></div>
+                    <div class="stat-item"><span>2+</span><p data-ru="Проектов" data-en="Projects">Проектов</p></div>
+                    <div class="stat-item"><span>1+</span><p data-ru="Года опыта" data-en="Years of exp.">Года опыта</p></div>
+                    <div class="stat-item"><span>100%</span><p data-ru="Отдачи" data-en="Dedication">Отдачи</p></div>
                 </div>
             </div>
             <div class="about-image" data-aos="fade-left">
@@ -97,38 +154,142 @@
         </div>
     </section>
 
-    <!-- 8. СЕКЦИЯ SKILLS -->
+    <!-- 12. TIMELINE -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 data-aos="fade-up" data-ru="Мой <span class='gradient-text'>путь</span>" data-en="My <span class='gradient-text'>Journey</span>">Мой <span class="gradient-text">путь</span></h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023</span>
+                        <h3 data-ru="Поступление в вуз" data-en="Entered University">Поступление в вуз</h3>
+                        <p data-ru="Начал изучать информатику и программирование." data-en="Started studying computer science and programming.">Начал изучать информатику и программирование.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2024</span>
+                        <h3 data-ru="Первый проект" data-en="First Project">Первый проект</h3>
+                        <p data-ru="Создал первый сайт-визитку на HTML/CSS." data-en="Created my first landing page with HTML/CSS.">Создал первый сайт-визитку на HTML/CSS.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2025</span>
+                        <h3 data-ru="Изучаю React" data-en="Learning React">Изучаю React</h3>
+                        <p data-ru="Начал осваивать современные фреймворки." data-en="Started mastering modern frameworks.">Начал осваивать современные фреймворки.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. PROJECTS -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 data-aos="fade-up" data-ru="Мои <span class='gradient-text'>проекты</span>" data-en="My <span class='gradient-text'>Projects</span>">Мои <span class="gradient-text">проекты</span></h2>
+            <div class="filter-buttons" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all" data-ru="Все" data-en="All">Все</button>
+                <button class="filter-btn" data-filter="web" data-ru="Сайты" data-en="Websites">Сайты</button>
+                <button class="filter-btn" data-filter="bot" data-ru="Боты" data-en="Bots">Боты</button>
+                <button class="filter-btn" data-filter="design" data-ru="Дизайн" data-en="Design">Дизайн</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-category="web" data-aos="fade-up">
+                    <img src="https://via.placeholder.com/400x250/581c87/ffffff?text=Project+1" alt="Проект 1">
+                    <div class="project-info">
+                        <h3>Project 1</h3>
+                        <p data-ru="Часы с заметками" data-en="Project description">Часы с заметками</p>
+                        <a href="#" class="btn-small"><i class="fab fa-github"></i> GitHub</a> 
+                    </div>
+                </div>
+         </section>
+
+    <!-- 14. GALLERY -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 data-aos="fade-up" data-ru="Мои <span class='gradient-text'>рисунки</span>" data-en="My <span class='gradient-text'>Art</span>">Мои <span class="gradient-text">рисунки</span></h2>
+            <div class="gallery-grid">
+                <a href="avatar1.jpg" data-lightbox="art" data-title="Работа 1" data-aos="zoom-in"><img src="avatar1.jpg" alt="Работа 1"></a>
+                <a href="avatar2.jpg" data-lightbox="art" data-title="Работа 2" data-aos="zoom-in"><img src="avatar2.jpg" alt="Работа 2"></a>
+                <a href="avatar1.jpg" data-lightbox="art" data-title="Работа 3" data-aos="zoom-in"><img src="avatar1.jpg" alt="Работа 3"></a>
+                <a href="avatar2.jpg" data-lightbox="art" data-title="Работа 4" data-aos="zoom-in"><img src="avatar2.jpg" alt="Работа 4"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 15. REVIEWS -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <h2 data-aos="fade-up" data-ru="Отзывы" data-en="Reviews">Отзывы</h2>
+            <div class="reviews-grid">
+                <div class="review-card" data-aos="fade-up">
+                    <i class="fas fa-quote-left"></i>
+                    <p data-ru="Отличный разработчик! Сделал сайт быстро и качественно." data-en="Great developer! Made the site fast and with high quality.">Отличный разработчик! Сделал сайт быстро и качественно.</p>
+                    <span>— Друг</span>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-quote-left"></i>
+                    <p data-ru="Очень творческий подход и внимание к деталям." data-en="Very creative approach and attention to detail.">Очень творческий подход и внимание к деталям.</p>
+                    <span>— Преподаватель</span>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-quote-left"></i>
+                    <p data-ru="Быстро учится и всегда на связи." data-en="Learns fast and is always in touch.">Быстро учится и всегда на связи.</p>
+                    <span>— Заказчик</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 16. SKILLS -->
     <section id="skills" class="skills">
         <div class="container">
-            <h2 data-aos="fade-up">Tools & <span class="gradient-text">Technologies</span></h2>
+            <h2 data-aos="fade-up" data-ru="Инструменты и <span class='gradient-text'>технологии</span>" data-en="Tools & <span class='gradient-text'>Technologies</span>">Инструменты и <span class="gradient-text">технологии</span></h2>
             <div class="skills-grid">
-                <div class="skill-card" data-aos="zoom-in" data-aos-delay="50"><i class="fab fa-html5" style="color:#e34c26"></i><div><h3>HTML5</h3><p>Разметка</p></div></div>
-                <div class="skill-card" data-aos="zoom-in" data-aos-delay="100"><i class="fab fa-css3-alt" style="color:#264de4"></i><div><h3>CSS3</h3><p>Стилизация</p></div></div>
-                <div class="skill-card" data-aos="zoom-in" data-aos-delay="150"><i class="fab fa-js" style="color:#f0db4f"></i><div><h3>JavaScript</h3><p>Язык</p></div></div>
-                <div class="skill-card" data-aos="zoom-in" data-aos-delay="200"><i class="fab fa-react" style="color:#61dafb"></i><div><h3>React</h3><p>Фреймворк</p></div></div>
-                <div class="skill-card" data-aos="zoom-in" data-aos-delay="250"><i class="fab fa-node" style="color:#68a063"></i><div><h3>Node JS</h3><p>Среда</p></div></div>
-                <div class="skill-card" data-aos="zoom-in" data-aos-delay="300"><i class="fab fa-github" style="color:#fff"></i><div><h3>GitHub</h3><p>Репозиторий</p></div></div>
-                <div class="skill-card" data-aos="zoom-in" data-aos-delay="350"><i class="fab fa-figma" style="color:#f24e1e"></i><div><h3>Figma</h3><p>Дизайн</p></div></div>
-                <div class="skill-card" data-aos="zoom-in" data-aos-delay="400"><i class="fas fa-code" style="color:#007acc"></i><div><h3>VS Code</h3><p>Редактор</p></div></div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="50"><i class="fab fa-html5" style="color:#e34c26"></i><div><h3>HTML5</h3><p data-ru="Разметка" data-en="Markup">Разметка</p></div></div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="100"><i class="fab fa-css3-alt" style="color:#264de4"></i><div><h3>CSS3</h3><p data-ru="Стилизация" data-en="Styling">Стилизация</p></div></div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="150"><i class="fab fa-js" style="color:#f0db4f"></i><div><h3>JavaScript</h3><p data-ru="Язык" data-en="Language">Язык</p></div></div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="200"><i class="fab fa-react" style="color:#61dafb"></i><div><h3>React</h3><p data-ru="Фреймворк" data-en="Framework">Фреймворк</p></div></div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="250"><i class="fab fa-node" style="color:#68a063"></i><div><h3>Node JS</h3><p data-ru="Среда" data-en="Runtime">Среда</p></div></div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="300"><i class="fab fa-github" style="color:#fff"></i><div><h3>GitHub</h3><p data-ru="Репозиторий" data-en="Repository">Репозиторий</p></div></div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="350"><i class="fab fa-figma" style="color:#f24e1e"></i><div><h3>Figma</h3><p data-ru="Дизайн" data-en="Design">Дизайн</p></div></div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="400"><i class="fas fa-code" style="color:#007acc"></i><div><h3>VS Code</h3><p data-ru="Редактор" data-en="Editor">Редактор</p></div></div>
             </div>
         </div>
     </section>
 
-    <!-- 9. СЕКЦИЯ КОНТАКТЫ (без Email) -->
+    <!-- 17. CONTACT + FORM -->
     <section id="contact" class="contact">
         <div class="container" data-aos="fade-up">
-            <h2>Свяжитесь <span class="gradient-text">со мной</span></h2>
-            <p class="contact-sub">Всегда открыт для новых идей и предложений</p>
-            <div class="social-links">
-                <a href="https://t.me/reychik_sketch" target="_blank" class="social-btn telegram"><i class="fab fa-telegram"></i> Telegram</a>
-                <a href="https://github.com/The-Ray588" target="_blank" class="social-btn github"><i class="fab fa-github"></i> GitHub</a>
+            <h2 data-ru="Свяжитесь <span class='gradient-text'>со мной</span>" data-en="Contact <span class='gradient-text'>Me</span>">Свяжитесь <span class="gradient-text">со мной</span></h2>
+            <p class="contact-sub" data-ru="Всегда открыт для новых идей и предложений" data-en="Always open to new ideas and suggestions">Всегда открыт для новых идей и предложений</p>
+            
+            <div class="contact-wrapper">
+                <div class="social-links">
+                    <a href="https://t.me/reychik_sketch" target="_blank" class="social-btn telegram"><i class="fab fa-telegram"></i> Telegram</a>
+                    <a href="https://github.com/The-Ray588" target="_blank" class="social-btn github"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+
+                <form class="contact-form" action="https://formspree.io/f/ВАШ_ID" method="POST">
+                    <input type="text" name="name" placeholder="Ваше имя" required>
+                    <input type="email" name="email" placeholder="Ваш Email" required>
+                    <textarea name="message" rows="5" placeholder="Ваше сообщение" required></textarea>
+                    <button type="submit" class="btn-solid" data-ru="Отправить" data-en="Send">Отправить</button>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- Библиотеки -->
+    <!-- Скрипты -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
 </body>
-                  </html>
+                    </html>
